@@ -14,11 +14,11 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            '/api': {
+            '/ltc': {
                 changeOrigin: true,
-                target: 'http://129.211.29.207:8091/app/index',
+                target: 'http://129.211.29.207:8083/wallet',
                 pathRewrite: {
-                    '^/api': ''
+                    '^/ltc': ''
                 }
             }
         }
