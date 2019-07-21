@@ -4,7 +4,7 @@
         <!-- 矿工数 -->
         <router-link class="home-num" to="/index">
             <img src="../../assets/images/home-icon-cat.png" />
-            <span>X{{detail.ltcNumber || 1}}矿工</span>
+            <span>X{{detail.ltcNumber || 0}}矿工</span>
         </router-link>
         <!-- 故事背景、挖矿记录 -->
         <div class="home-list">
@@ -18,8 +18,8 @@
             </div>
         </div>
         <!-- 进度条 -->
-        <div class="home-bar" :style="`--per: ${detail.orePercentage}%`">
-            <span>{{detail.orePercentage}}%</span>
+        <div class="home-bar" :style="`--per: ${detail.orePercentage || 0}%`">
+            <span>{{detail.orePercentage || 0}}%</span>
         </div>
         <!-- 砖石矿 -->
         <div class="home-diamond" v-if="detail.readyAmount" @click="receiveOre">{{detail.readyAmount}}</div>
@@ -113,6 +113,12 @@ export default {
                 })
         },
         showPop () {
+            if (!this.list.length) {
+                this.Toast({
+                    message: '暂时没有挖矿记录'
+                })
+                return
+            }
             this.show = true
         },
         hide () {

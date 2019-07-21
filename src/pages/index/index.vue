@@ -78,8 +78,14 @@ export default {
     },
     created () {
         this.getLtcPrice()
+        document.addEventListener('click', this.clickHandler)
     },
     methods: {
+        clickHandler (event) {
+            if (event.target.className.indexOf('index-mask') !== -1) {
+                this.$router.push('/home')
+            }
+        },
         // 忘记密码提示
         showTips () {
             this.Toast({
@@ -125,16 +131,12 @@ export default {
         },
         // 支付购买
         pay (payCertificate) {
-            this.tipsShow = false
-            this.psdShow = false
-            this.successShow = true
             this.Ajax.buyLtc({
                 buyPrice: this.ltcPrice.buyPrice,
                 activePrice: this.ltcPrice.activePrice,
                 payTimestamps: new Date().getTime(),
                 payCertificate: payCertificate,
             }).then(res => {
-                console.log(res);
                 if (res.code === '0000') {
                     this.tipsShow = false
                     this.psdShow = false
@@ -152,6 +154,9 @@ export default {
                 })
             })
         }
+    },
+    destroyed () {
+        document.removeEventListener('click', this.clickHandler)
     }
 }
 </script>

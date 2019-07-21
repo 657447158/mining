@@ -20,7 +20,15 @@ module.exports = {
                 pathRewrite: {
                     '^/ltc': ''
                 }
-            }
+            },
+            '/wallet/': {
+                changeOrigin: true,
+                target: 'http://129.211.29.207:8083',
+                // 这个是本地的开发调试的环境
+                pathRewrite: {
+                    '^/wallet/': '/wallet/'
+                }
+            },
         }
     }
 }

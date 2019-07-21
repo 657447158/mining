@@ -33,26 +33,26 @@ router.beforeEach((to, from, next) => {
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].click()
   }
-  if (to.query.token) {
+  if (to.query.param) {
     axios({
       method: 'post',
-      url: '/ltc/index/',
+      url: '/wallet/api/otc/immediately/getWebToken',
       params: {
-        method: '/wallet/switchTokenForOtc',
-        mediaType: 'h5',
-        token: to.query.token,
-        sign: '',
-        hasToken: '1'
+        param: to.query.param,
       }
     }).then(res => {
-      if (res.data.code === '1') {
+      console.log(res);
+      if (res.data.success == true) {
         localStorage.setItem("ltctoken", res.data.data)
+        axios.defaults.headers.token = localStorage.getItem('ltctoken')
         if (to.name === 'home') {
           checkUserLtc(next)
         }
+        next()
       }
     }).catch(err =>{
       console.log('fail' + err)
+      next()
     })
   } else if (to.name === 'home') {
     checkUserLtc(next)
