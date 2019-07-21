@@ -22,7 +22,7 @@
             <span>{{detail.orePercentage || 0}}%</span>
         </div>
         <!-- 砖石矿 -->
-        <div class="home-diamond" v-if="detail.readyAmount" @click="receiveOre">{{detail.readyAmount}}</div>
+        <div class="home-diamond" v-show="oreShow" @click="receiveOre">{{detail.readyAmount}}</div>
         <!-- 挖矿记录弹窗 -->
         <otc-modal :show="show" @hide="hide">
             <div class="record-wrap">
@@ -63,7 +63,9 @@ export default {
         return {
             detail: {},
             show: false,
-            list: []
+            list: [],
+            // 钻石是否显示
+            oreShow: false
         }
     },
     created () {
@@ -76,6 +78,9 @@ export default {
                 .then(res => {
                     if (res.code === '0000') {
                         this.detail = res.data
+                        if (res.data.readyAmount) {
+                            this.oreShow = true
+                        }
                     }
                 })
                 .catch(err => {
@@ -98,6 +103,7 @@ export default {
                 .then(res => {
                     if (res.code === '0000') {
                         this.$refs.music.play()
+                        this.oreShow = false
                     } else {
                         this.Toast({
                             type: 'error',
@@ -185,6 +191,7 @@ export default {
             bottom: 1.7rem;
             width: 2rem;
             height: .3rem;
+            line-height: .3rem;
             color: $fc01;
             font-size: $f24;
             background: $bg01;
