@@ -17,7 +17,9 @@ let checkUserLtc = (next) => {
     url: '/ltc/api/ltc/checkUserLtc'
   }).then(res => {
     if (res.data.code === '0000' && res.data.success) {
-      next('/home')
+      next()
+    } else if (res.data.code === '0000' && !res.data.success) {
+      next('/index')
     } else {
       next()
     }
@@ -31,7 +33,7 @@ router.beforeEach((to, from, next) => {
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].click()
   }
-  if (to.name === 'index' && to.query.token) {
+  if (to.query.token) {
     axios({
       method: 'post',
       url: '/ltc/index/',
@@ -45,12 +47,14 @@ router.beforeEach((to, from, next) => {
     }).then(res => {
       if (res.data.code === '1') {
         localStorage.setItem("ltctoken", res.data.data)
-        checkUserLtc(next)
+        if (to.name === 'home') {
+          checkUserLtc(next)
+        }
       }
     }).catch(err =>{
       console.log('fail' + err)
     })
-  } else if (to.name === 'index') {
+  } else if (to.name === 'home') {
     checkUserLtc(next)
   } else {
     next()

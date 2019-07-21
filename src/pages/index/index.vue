@@ -164,9 +164,10 @@ export default {
         .cat {
             position: absolute;
             top: -1.3rem;
-            left: 2.56rem;
+            left: 50%;
             width: 1.58rem;
             height: 2.08rem;
+            transform: translateX(-50%);
         }
         &-mask {
             position: absolute;

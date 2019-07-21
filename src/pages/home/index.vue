@@ -2,10 +2,10 @@
     <div class="home">
         <img class="home-cat" src="../../assets/images/home-cat.gif" />
         <!-- 矿工数 -->
-        <div class="home-num">
+        <router-link class="home-num" to="/index">
             <img src="../../assets/images/home-icon-cat.png" />
             <span>X{{detail.ltcNumber || 1}}矿工</span>
-        </div>
+        </router-link>
         <!-- 故事背景、挖矿记录 -->
         <div class="home-list">
             <router-link class="home-list-item" to="/background">
@@ -22,7 +22,7 @@
             <span>{{detail.orePercentage}}%</span>
         </div>
         <!-- 砖石矿 -->
-        <div class="home-diamond" v-if="parseInt(detail.orePercentage) === 100">{{detail.readyAmount}}</div>
+        <div class="home-diamond" v-if="detail.readyAmount" @click="receiveOre">{{detail.readyAmount}}</div>
         <!-- 挖矿记录弹窗 -->
         <otc-modal :show="show" @hide="hide">
             <div class="record-wrap">
@@ -47,6 +47,14 @@
                 </ul>
             </div>
         </otc-modal>
+        <!-- 收取钻石音效 -->
+        <audio
+			src="http://appimage.lmetoken.cn/video/5293.mp3"
+			preload
+			ref="music"
+			controls
+			style="opacity: 0"
+		></audio>
     </div>
 </template>
 <script>
@@ -82,6 +90,26 @@ export default {
                 })
                 .catch(err => {
                     console.log(err);
+                })
+        },
+        // 收取钻石
+        receiveOre () {
+            this.Ajax.receiveOre()
+                .then(res => {
+                    if (res.code === '0000') {
+                        this.$refs.music.play()
+                    } else {
+                        this.Toast({
+                            type: 'error',
+                            message: res.message
+                        })
+                    }
+                })
+                .catch(err => {
+                    this.Toast({
+                        type: 'error',
+                        message: err
+                    })
                 })
         },
         showPop () {

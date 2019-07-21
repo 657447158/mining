@@ -59,5 +59,15 @@ export default {
             url: '/app/pay/checkUserPayPassword',
             params: Object.assign({...params})
         })
+    },
+    /**
+     * [收取矿石]
+     */
+    receiveOre (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/receiveOre',
+            params: Object.assign({...params})
+        })
     }
 }

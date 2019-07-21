@@ -9,4 +9,3 @@ const components = [
 for (let i = 0; i < components.length; i++) {
     Vue.component(components[i].name, components[i])
 }
-  
