@@ -211,7 +211,7 @@ export default {
                 border-radius: .15rem;
             }
             span {
-                padding-left: .2rem;
+                padding-left: .6rem;
                 position: relative;
                 z-index: 9;
             }
