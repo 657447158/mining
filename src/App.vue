@@ -33,3 +33,12 @@ export default {
 	}
 }
 </script>
+<style lang="scss" scoped>
+	audio {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		opacity: 0
+	}
+</style>

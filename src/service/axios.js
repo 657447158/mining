@@ -3,8 +3,8 @@ import Toast from '@/components/toast'
 let baseURL = ''
 
 // 设置token
-axios.defaults.headers.token = localStorage.getItem('ltctoken')
-// axios.defaults.headers.token = '%2FnuxJczgzyI6fNXbnZwxtFH6Ae6IoJyQGMWNzC8TepjLUTiwfckUacESJIl9ZqMAgIjkZAP44l02%0AIkWBuqck9Q%3D%3D.TEU89gEa8POXZdTinC4wyAGK7nmc3Z%2BsLJcILTlh9LByPfCsOycc8q2QJQA%2F50833mDPWg%2B77973%0ApxRgQVwfeSc9WVHVqgiHM%2B2LYDhTVOoldYhf%2FxB6vPgk7uKpVz8kQt6Cbc5dnI6BrM%2BkYP%2BTvQ%3D%3D'
+// axios.defaults.headers.token = localStorage.getItem('ltctoken')
+axios.defaults.headers.token = '%2FnuxJczgzyI6fNXbnZwxtOAbo0y%2FA3tPu4jPWQhNCwhZNLx6qL508JhW49lxqCXW.TEU89gEa8POXZdTinC4wyLM05bZf6%2BunhbvQp7o5uHVfHeId5i%2FNdMMJyx8CPdAVTwbgWmQdTaub%0AkSZTV8YaR5GkeGruB0NHSzeZv8%2FKa8O6W95%2Fyjv9tznNWiHSQ%2BhJ'
 
 export default function ajax (p) {
     let options = Object.assign({

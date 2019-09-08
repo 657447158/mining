@@ -1,12 +1,22 @@
 import ajax from './axios'
 export default {
     /**
+     * [获取用户邀请码]
+     */
+    getUserInvitationCode (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/simple/getUserInvitationCode',
+            params: Object.assign({...params})
+        })
+    },
+    /**
      * [检查用户有没有矿机]
      */
     checkUserLtc (params) {
         return ajax({
             type: 'POST',
-            url: '/api/ltc/checkUserLtc',
+            url: '/api/ltc/simple/checkUserLtc',
             params: Object.assign({...params})
         })
     },
@@ -16,7 +26,7 @@ export default {
     getLtcPrice (params) {
         return ajax({
             type: 'POST',
-            url: '/api/ltc/getLtcPrice',
+            url: '/api/ltc/simple/getLtcPrice',
             params: Object.assign({...params})
         })
     },
@@ -26,7 +36,7 @@ export default {
     buyLtc (params) {
         return ajax({
             type: 'POST',
-            url: '/api/ltc/buyLtc',
+            url: '/api/ltc/simple/buyLtc',
             params: Object.assign({...params})
         })
     },
@@ -36,7 +46,7 @@ export default {
     ltcDetail (params) {
         return ajax({
             type: 'POST',
-            url: '/api/ltc/ltcDetail',
+            url: '/api/ltc/simple/ltcDetail',
             params: Object.assign({...params})
         })
     },
@@ -46,7 +56,7 @@ export default {
     ltcOreRecord (params) {
         return ajax({
             type: 'POST',
-            url: '/api/ltc/ltcOreRecord',
+            url: '/api/ltc/simple/ltcOreRecord',
             params: Object.assign({...params})
         })
     },
@@ -66,7 +76,37 @@ export default {
     receiveOre (params) {
         return ajax({
             type: 'POST',
-            url: '/api/ltc/receiveOre',
+            url: '/api/ltc/simple/receiveOre',
+            params: Object.assign({...params})
+        })
+    },
+    /**
+     * [绑定邀请码]
+     */
+    bindInvitationCode (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/simple/bindInvitationCode',
+            params: Object.assign({...params})
+        })
+    },
+    /**
+     * [获取用户邀请列表]
+     */
+    getUserInvitationList (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/simple/getUserInvitationList',
+            params: Object.assign({...params})
+        })
+    },
+    /**
+     * [获取矿机奖励币种]
+     */
+    getLtcCoin (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/simple/getLtcCoin',
             params: Object.assign({...params})
         })
     }

@@ -1,10 +1,10 @@
 <template>
     <div class="bg">
         <div class="bg-wrap">
-            <img class="bg-icon1" src="../../assets/images/home-icon-bg.png" />
-            <img class="bg-icon2" src="../../assets/images/story-icon-1.png" />
+            <img class="bg-icon1" src="../../assets/images/home-icon-bg2.png" />
+            <!-- <img class="bg-icon2" src="../../assets/images/story-icon-1.png" /> -->
             <img class="bg-icon3" src="../../assets/images/index-pic-1.png" />
-            <img class="bg-icon4" src="../../assets/images/story-icon-2.png" />
+            <!-- <img class="bg-icon4" src="../../assets/images/story-icon-2.png" /> -->
             <div class="bg-ct">
                 <p class="title">宝石矿场</p>
                 <p class="p">宝石矿场是龙猫星球上的矿场之一,龙猫星球是区块链星际联盟的星球之一，宝石矿场蕴含着丰富的红宝石MGS,红宝石具有非常高的实际价值也是龙猫星球流通的货币之一，这里生活着大量的龙猫矿工,矿工们日以继夜的勤奋的采集着矿场的红宝石，想在宝石矿场采集红宝石，必须雇佣 龙猫矿工为你服务。
@@ -20,7 +20,7 @@
         padding: .77rem .4rem 1.12rem;
         width: 100vw;
         height: 100vh;
-        background: url('../../assets/images/story-bg.png') no-repeat center / 100% 100%;
+        background: url('../../assets/images/bg.jpg') no-repeat center / 100% 100%;
         &-wrap {
             position: relative;
             width: 100%;
@@ -67,7 +67,7 @@
             margin-bottom: .65rem;
             padding: 0 .3rem;
             font-size: $f28;
-            color: #136187;
+            color: $fc02;
             line-height: .48rem;
         }
     }

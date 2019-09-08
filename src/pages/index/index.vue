@@ -165,7 +165,8 @@ export default {
         position: relative;
         width: 100vw;
         height: 100vh;
-        background: url('../../assets/images/bg.gif') no-repeat center / 100% 100%;
+        // background: url('../../assets/images/bg.gif') no-repeat center / 100% 100%;
+        background: url('../../assets/images/bg.jpg') no-repeat center / 100% 100%;
         .cat {
             position: absolute;
             top: -1.3rem;

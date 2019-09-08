@@ -1,17 +1,16 @@
 const routes = [
     {
         path: '/',
-        redirect: '/index',
-        component: () => import('../pages/index/index.vue')
+        redirect: '/home'
     },
-    {
-        path: '/index',
-        name: 'index',
-        meta: {
-            title: '龙猫广场'
-        },
-        component: () => import('../pages/index/index.vue')
-    },
+    // {
+    //     path: '/index',
+    //     name: 'index',
+    //     meta: {
+    //         title: '龙猫广场'
+    //     },
+    //     component: () => import('../pages/index/index.vue')
+    // },
     {
         path: '/home',
         name: 'home',

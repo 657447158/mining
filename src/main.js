@@ -11,22 +11,22 @@ Vue.config.productionTip = false
 Vue.prototype.Ajax = Ajax
 Vue.use(Toast)
 
-let checkUserLtc = (next) => {
-  axios({
-    method: 'post',
-    url: '/ltc/api/ltc/checkUserLtc'
-  }).then(res => {
-    if (res.data.code === '0000' && res.data.success) {
-      next()
-    } else if (res.data.code === '0000' && !res.data.success) {
-      next('/index')
-    } else {
-      next()
-    }
-  }).catch(err => {
-    console.log(err);
-  })
-}
+// let checkUserLtc = (next) => {
+//   axios({
+//     method: 'post',
+//     url: '/ltc/api/ltc/simple/checkUserLtc'
+//   }).then(res => {
+//     if (res.data.code === '0000' && res.data.success) {
+//       next()
+//     } else if (res.data.code === '0000' && !res.data.success) {
+//       next('/index')
+//     } else {
+//       next()
+//     }
+//   }).catch(err => {
+//     console.log(err);
+//   })
+// }
 
 router.beforeEach((to, from, next) => {
   let nodeList = document.querySelectorAll('.mask')
@@ -45,17 +45,12 @@ router.beforeEach((to, from, next) => {
       if (res.data.success == true) {
         localStorage.setItem("ltctoken", res.data.data)
         axios.defaults.headers.token = localStorage.getItem('ltctoken')
-        if (to.name === 'home') {
-          checkUserLtc(next)
-        }
         next()
       }
     }).catch(err =>{
       console.log('fail' + err)
       next()
     })
-  } else if (to.name === 'home') {
-    checkUserLtc(next)
   } else {
     next()
   }
