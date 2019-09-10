@@ -4,29 +4,14 @@ import router from './routes'
 import Ajax from './service'
 import Toast from './components/toast'
 import axios from 'axios'
+import VueClipboard from 'vue-clipboard2'
 import './components'
 import './utils/scale_750'
 import './assets/styles/layout.scss'
 Vue.config.productionTip = false
 Vue.prototype.Ajax = Ajax
 Vue.use(Toast)
-
-// let checkUserLtc = (next) => {
-//   axios({
-//     method: 'post',
-//     url: '/ltc/api/ltc/simple/checkUserLtc'
-//   }).then(res => {
-//     if (res.data.code === '0000' && res.data.success) {
-//       next()
-//     } else if (res.data.code === '0000' && !res.data.success) {
-//       next('/index')
-//     } else {
-//       next()
-//     }
-//   }).catch(err => {
-//     console.log(err);
-//   })
-// }
+Vue.use(VueClipboard)
 
 router.beforeEach((to, from, next) => {
   let nodeList = document.querySelectorAll('.mask')
@@ -41,7 +26,6 @@ router.beforeEach((to, from, next) => {
         param: to.query.param,
       }
     }).then(res => {
-      console.log(res);
       if (res.data.success == true) {
         localStorage.setItem("ltctoken", res.data.data)
         axios.defaults.headers.token = localStorage.getItem('ltctoken')

@@ -16,7 +16,7 @@
                 <img src="../../assets/images/home-icon-record.png" />
                 <span>挖矿记录</span>
             </div>
-            <div class="home-list-item" @click="showPop">
+            <div class="home-list-item" @click="showMyCodePop">
                 <img src="../../assets/images/home-icon-code.png" />
                 <span>邀请码</span>
             </div>
@@ -25,7 +25,7 @@
                 <span>已邀请</span>
             </div>
             <!-- 收取关闭 -->
-            <div class="home-list-item home-list-item1" @click="showPop">
+            <div class="home-list-item home-list-item1" @click="showAutoPop">
                 <img src="../../assets/images/home-icon-closed.png" />
                 <span>收取关闭</span>
             </div>
@@ -69,6 +69,8 @@
                 </ul>
             </div>
         </otc-modal>
+        <!-- 我的二维码 -->
+        <my-code :show="showMyCode" @hide="hide" />
         <!-- 已邀请记录 -->
         <otc-modal :show="showInvited" @hide="hide">
             <div class="record-wrap">
@@ -101,6 +103,8 @@
                 </ul>
             </div>
         </otc-modal>
+        <!-- 自动收取 -->
+        <auto-receive :show="showAuto" @hide="hide" />
         <!-- 收取钻石音效 -->
         <audio
 			src="http://appimage.lmetoken.cn/video/5293.mp3"
@@ -114,10 +118,14 @@
 <script>
 import CodeBox from './code-box';
 import BuyBox from './buy-box';
+import MyCode from './my-code';
+import AutoReceive from './auto-receive';
 export default {
     components: {
         CodeBox,
-        BuyBox
+        BuyBox,
+        MyCode,
+        AutoReceive
     },
     data () {
         return {
@@ -134,7 +142,11 @@ export default {
             // 购买矿机弹窗
             userLtcFlag: true,
             showBuyBox: false,
-            canHide: true
+            canHide: true,
+            // 我的验证码
+            showMyCode: false,
+            // 自动收取
+            showAuto: false
         }
     },
     created () {
@@ -189,6 +201,14 @@ export default {
         // 显示购买矿机弹窗
         showLtcPop () {
             this.showBuyBox = true
+        },
+        // 显示我的邀请码
+        showMyCodePop () {
+            this.showMyCode = true
+        },
+        // 进入矿机自动收取窗口
+        showAutoPop () {
+            this.showAuto = true
         },
         // 购买成功后，允许hide操作
         changeHideFlag (val) {
@@ -269,6 +289,8 @@ export default {
             this.show = false
             this.showInvited = false
             this.showBuyBox = false
+            this.showMyCode = false
+            this.showAuto = false
         }
     }
 }

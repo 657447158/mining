@@ -1,19 +1,11 @@
 const routes = [
     {
         path: '/',
-        redirect: '/home'
+        redirect: '/index'
     },
-    // {
-    //     path: '/index',
-    //     name: 'index',
-    //     meta: {
-    //         title: '龙猫广场'
-    //     },
-    //     component: () => import('../pages/index/index.vue')
-    // },
     {
-        path: '/home',
-        name: 'home',
+        path: '/index',
+        name: 'index',
         meta: {
             title: '龙猫广场'
         },

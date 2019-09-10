@@ -109,5 +109,25 @@ export default {
             url: '/api/ltc/simple/getLtcCoin',
             params: Object.assign({...params})
         })
+    },
+    /**
+     * [进去矿机自动收取页面]
+     */
+    ltcAutoDetail (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/simple/ltcAutoDetail',
+            params: Object.assign({...params})
+        })
+    },
+    /**
+     * [开启或关闭矿机自动收取功能]
+     */
+    switchAutoFlag (params) {
+        return ajax({
+            type: 'POST',
+            url: '/api/ltc/simple/switchAutoFlag',
+            params: Object.assign({...params})
+        })
     }
 }
