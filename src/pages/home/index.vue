@@ -33,13 +33,12 @@
         <!-- 产出矿 -->
         <div class="home-bar" @click="receiveOre">
             <p
-                v-for="item in detail.userOreList"
+                v-for="item in userOreList"
                 :key="item.coinName"
             >
                 <span>{{item.coinName}}</span>
                 <span>{{item.readyAmount}}</span>
             </p>
-            <!-- <span>{{detail.orePercentage || 0}}%</span> -->
         </div>
         <!-- 绑定邀请码-弹窗 -->
         <code-box :show="showCodeBox" @confirm="codeConfirm" />
@@ -130,6 +129,8 @@ export default {
     data () {
         return {
             detail: {},
+            // 产出矿石
+            userOreList: [],
             // 挖矿记录
             show: false,
             list: [],
@@ -223,6 +224,7 @@ export default {
                 .then(res => {
                     if (res.code === '0000') {
                         this.detail = res.data
+                        this.userOreList = res.data.userOreList
                     }
                 })
                 .catch(err => {
@@ -257,6 +259,7 @@ export default {
                 .then(res => {
                     if (res.success) {
                         this.$refs.music.play()
+                        this.userOreList = []
                     } else {
                         this.Toast({
                             type: 'error',
